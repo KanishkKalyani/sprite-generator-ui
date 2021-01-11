@@ -140,7 +140,10 @@ const SpriteGenerator = () => {
             <strong>Example:</strong> If target folder{' '}
             <strong>'transform-blocks'</strong> is inside{' '}
             <strong>'transforms'</strong> folder, use the path{' '}
-            <strong>'transforms/transform-blocks'</strong>
+            <strong>'transforms/transform-blocks'.</strong>
+            <p>
+              Do not add '/' at front or back, just between the folder names.
+            </p>
           </small>
         </div>
         <hr />
