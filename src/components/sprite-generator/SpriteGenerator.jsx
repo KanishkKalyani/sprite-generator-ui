@@ -82,7 +82,7 @@ const SpriteGenerator = () => {
         setShowLoader(false);
       })
       .catch((error) => {
-        toast.error('Error occured, please try refreshing the page');
+        toast.error('Error occured, please check types of files in the cloudinary folder and your input');
 
         if (error?.response?.data?.error?.message) {
           toast.error(error?.response?.data?.error?.message);
@@ -309,6 +309,7 @@ const SpriteGenerator = () => {
         <button
           type='submit'
           className='btn btn-success btn-lg'
+          disabled={showLoader}
           onClick={handleSubmit}
         >
           {showLoader ? 'Generating...' : 'Generate Sprite'}
