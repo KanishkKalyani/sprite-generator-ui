@@ -82,7 +82,9 @@ const SpriteGenerator = () => {
         setShowLoader(false);
       })
       .catch((error) => {
-        toast.error('Error occured, please check types of files in the cloudinary folder and your input');
+        toast.error(
+          'Error occured, please check types of files in the cloudinary folder and your input'
+        );
 
         if (error?.response?.data?.error?.message) {
           toast.error(error?.response?.data?.error?.message);
@@ -354,7 +356,7 @@ const SpriteGenerator = () => {
             </p>
           )}
           {cssCode && (
-            <div>
+            <div className='pb-5'>
               <h2 className='text-center pb-3'>
                 CSS Code to use the Generated Sprite:
               </h2>
