@@ -79,11 +79,18 @@ const SpriteGenerator = () => {
 
         setCssCode(response.data.cssCode);
 
+        setFormInputs({
+          ...formInputs,
+          folderName: '',
+          outputFileName: 'output_sprite',
+          padding: 1,
+        });
+
         setShowLoader(false);
       })
       .catch((error) => {
         toast.error(
-          'Error occured, please check types of files in the cloudinary folder and your input'
+          'Error occured, please check name of the cloudinary folder and types of files in it.'
         );
 
         if (error?.response?.data?.error?.message) {
@@ -91,13 +98,6 @@ const SpriteGenerator = () => {
         } else if (error?.response?.data?.error) {
           toast.error(error?.response?.data?.error);
         }
-
-        setFormInputs({
-          ...formInputs,
-          folderName: '',
-          outputFileName: 'output_sprite',
-          padding: 1,
-        });
 
         setShowLoader(false);
       });
