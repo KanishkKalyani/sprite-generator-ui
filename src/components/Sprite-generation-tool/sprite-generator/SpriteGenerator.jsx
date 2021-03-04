@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { toast, ToastContainer, Zoom } from 'react-toastify';
 import CodeMirror from '@uiw/react-codemirror';
 import 'codemirror/theme/ayu-dark.css';
-import algorithmsImage from '../../assets/spritesmith-algorithms.png';
+import algorithmsImage from '../../../assets/spritesmith-algorithms.png';
 
 const SpriteGenerator = () => {
   const [formInputs, setFormInputs] = useState({
@@ -109,12 +109,13 @@ const SpriteGenerator = () => {
     setCopyStatus('Copied!');
   };
 
+  useEffect(() => {
+    toast.success('Welcome!');
+  }, []);
+
   return (
     <div className='container-fluid d-flex flex-column align-items-center'>
       <ToastContainer draggable={false} transition={Zoom} autoClose={3000} />
-      <h1 className='m-2 mb-4 text-danger font-weight-bolder text-center row'>
-        Hevo Sprite Generator
-      </h1>
       <form className='col-9 mb-3'>
         <div className='form-group'>
           <label className='font-weight-bold'>Cloudinary Folder Name</label>
@@ -308,14 +309,16 @@ const SpriteGenerator = () => {
           </>
         )}
 
-        <button
-          type='submit'
-          className='btn btn-success btn-lg'
-          disabled={showLoader}
-          onClick={handleSubmit}
-        >
-          {showLoader ? 'Generating...' : 'Generate Sprite'}
-        </button>
+        <div className='d-flex justify-content-end'>
+          <button
+            type='submit'
+            disabled={!folderName || !outputFileName || showLoader}
+            className='btn btn-success btn-lg'
+            onClick={handleSubmit}
+          >
+            {showLoader ? 'Generating...' : 'Generate Sprite'}
+          </button>
+        </div>
       </form>
 
       {(spriteLink || showLoader) && (
